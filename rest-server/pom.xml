@@ -94,6 +94,7 @@
     </dependencies>
 
     <build>
+        <finalName>ambulance-rest</finalName>
         <plugins>
             <!-- embedded Jetty server, for testing -->
             <plugin>

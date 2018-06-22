@@ -56,7 +56,7 @@ public class CallRestClientTest {
     public void getCallByIdTest() {
         ResponseEntity entity = new ResponseEntity(expCall, HttpStatus.FOUND);
 
-        EasyMock.expect(mockRestTemplate.getForEntity("http://localhost:8090/calls/1", Call.class))
+        EasyMock.expect(mockRestTemplate.getForEntity("http://reisin.asuscomm.com:8180/ambulance-rest/calls/1", Call.class))
                 .andReturn(entity);
         EasyMock.replay(mockRestTemplate);
 
@@ -70,7 +70,7 @@ public class CallRestClientTest {
         ResponseEntity entity = new ResponseEntity(expCall, HttpStatus.FOUND);
 
         EasyMock.expect(mockRestTemplate
-                .postForEntity("http://localhost:8090/calls", expCall, Call.class))
+                .postForEntity("http://reisin.asuscomm.com:8180/ambulance-rest/calls", expCall, Call.class))
                 .andReturn(entity);
         EasyMock.replay(mockRestTemplate);
 
@@ -80,7 +80,7 @@ public class CallRestClientTest {
 
     @Test
     public void updateCallTest() {
-        mockRestTemplate.put("http://localhost:8090/calls", expCall);
+        mockRestTemplate.put("http://reisin.asuscomm.com:8180/ambulance-rest/calls", expCall);
         EasyMock.expectLastCall();
         EasyMock.replay(mockRestTemplate);
 
@@ -89,7 +89,7 @@ public class CallRestClientTest {
 
     @Test
     public void deleteCallByIdTest() {
-        mockRestTemplate.delete("http://localhost:8090/calls/1");
+        mockRestTemplate.delete("http://reisin.asuscomm.com:8180/ambulance-rest/calls/1");
         EasyMock.expectLastCall();
         EasyMock.replay(mockRestTemplate);
 
@@ -102,7 +102,7 @@ public class CallRestClientTest {
         ResponseEntity entity = new ResponseEntity(calls, HttpStatus.FOUND);
 
         EasyMock.expect(mockRestTemplate
-                .getForEntity("http://localhost:8090/calls", List.class))
+                .getForEntity("http://reisin.asuscomm.com:8180/ambulance-rest/calls", List.class))
                 .andReturn(entity);
         EasyMock.replay(mockRestTemplate);
 
@@ -117,7 +117,7 @@ public class CallRestClientTest {
         ResponseEntity entity = new ResponseEntity(calls, HttpStatus.FOUND);
 
         EasyMock.expect(mockRestTemplate
-                .getForEntity("http://localhost:8090/calls/2018-03-14/2018-03-15", List.class))
+                .getForEntity("http://reisin.asuscomm.com:8180/ambulance-rest/calls/2018-03-14/2018-03-15", List.class))
                 .andReturn(entity);
         EasyMock.replay(mockRestTemplate);
 

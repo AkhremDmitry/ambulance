@@ -102,6 +102,7 @@
     </dependencies>
 
     <build>
+        <finalName>ambulance-UI</finalName>
         <plugins>
             <!-- embedded Jetty server, for testing -->
             <plugin>

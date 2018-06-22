@@ -56,7 +56,7 @@ public class CrewRestClientTest {
         List crews = Arrays.asList(crewDto);
         ResponseEntity entity = new ResponseEntity(crews, HttpStatus.FOUND);
 
-        EasyMock.expect(mockRestTemplate.getForEntity("http://localhost:8090/crewsDto", List.class))
+        EasyMock.expect(mockRestTemplate.getForEntity("http://reisin.asuscomm.com:8180/ambulance-rest/crewsDto", List.class))
                 .andReturn(entity);
         EasyMock.replay(mockRestTemplate);
 
@@ -71,7 +71,7 @@ public class CrewRestClientTest {
     public void getCrewByIdTest(){
         ResponseEntity entity = new ResponseEntity(expCrew, HttpStatus.FOUND);
 
-        EasyMock.expect(mockRestTemplate.getForEntity("http://localhost:8090/crews/1", Crew.class))
+        EasyMock.expect(mockRestTemplate.getForEntity("http://reisin.asuscomm.com:8180/ambulance-rest/crews/1", Crew.class))
                 .andReturn(entity);
         EasyMock.replay(mockRestTemplate);
 
@@ -85,7 +85,7 @@ public class CrewRestClientTest {
         ResponseEntity entity = new ResponseEntity(expCrew, HttpStatus.FOUND);
 
         EasyMock.expect(mockRestTemplate
-                .postForEntity("http://localhost:8090/crews", expCrew, Crew.class))
+                .postForEntity("http://reisin.asuscomm.com:8180/ambulance-rest/crews", expCrew, Crew.class))
                 .andReturn(entity);
         EasyMock.replay(mockRestTemplate);
 
@@ -96,7 +96,7 @@ public class CrewRestClientTest {
 
     @Test
     public void updateCrewTest(){
-        mockRestTemplate.put("http://localhost:8090/crews", expCrew);
+        mockRestTemplate.put("http://reisin.asuscomm.com:8180/ambulance-rest/crews", expCrew);
         EasyMock.expectLastCall();
         EasyMock.replay(mockRestTemplate);
 
@@ -105,7 +105,7 @@ public class CrewRestClientTest {
 
     @Test
     public void deleteCrewByIdTest(){
-        mockRestTemplate.delete("http://localhost:8090/crews/1");
+        mockRestTemplate.delete("http://reisin.asuscomm.com:8180/ambulance-rest/crews/1");
         EasyMock.expectLastCall();
         EasyMock.replay(mockRestTemplate);
 
@@ -118,7 +118,7 @@ public class CrewRestClientTest {
         List crews = Arrays.asList(crew);
         ResponseEntity entity = new ResponseEntity(crews, HttpStatus.FOUND);
 
-        EasyMock.expect(mockRestTemplate.getForEntity("http://localhost:8090/crews", List.class))
+        EasyMock.expect(mockRestTemplate.getForEntity("http://reisin.asuscomm.com:8180/ambulance-rest/crews", List.class))
                 .andReturn(entity);
         EasyMock.replay(mockRestTemplate);
 
@@ -139,7 +139,7 @@ public class CrewRestClientTest {
         ResponseEntity entity = new ResponseEntity(crews, HttpStatus.FOUND);
 
         EasyMock.expect(mockRestTemplate
-                .getForEntity("http://localhost:8090/crews/2018-03-14/2018-03-15",
+                .getForEntity("http://reisin.asuscomm.com:8180/ambulance-rest/crews/2018-03-14/2018-03-15",
                         List.class))
                 .andReturn(entity);
         EasyMock.replay(mockRestTemplate);
