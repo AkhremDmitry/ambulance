@@ -149,7 +149,7 @@
                         </thead>
                         <tbody>
                         <tr th:each="call : ${calls}">
-                            <td th:text="${#dates.format(call.dateCall, 'dd-MM-yyyy')}">23-03-2018</td>
+                            <td th:text="${call.dateCall}">23-03-2018</td>
                             <td th:text="${call.description}">q</td>
                             <td th:text="${call.address}">1</td>
 
