@@ -44,7 +44,7 @@ public class CrewController {
      */
     private final static Logger LOGGER = LogManager.getLogger();
 
-    @GetMapping(value = PATH_TO_ROOT_FOLDER+"/crews")
+    @GetMapping(value = "/crews")
     public final String getCrews(final Model model) {
         LOGGER.debug("Req: getCrews()");
         Collection<CrewDtoWithCall> crews =
@@ -56,7 +56,7 @@ public class CrewController {
         return "crews";
     }
 
-    @GetMapping(value = PATH_TO_ROOT_FOLDER+"/crew")
+    @GetMapping(value = "/crew")
     public final String getAddCrew(final Model model) {
         LOGGER.debug("Req: getAddCrew()");
         boolean isEdit = false;
@@ -68,7 +68,7 @@ public class CrewController {
         return "crew";
     }
 
-    @PostMapping(value = PATH_TO_ROOT_FOLDER+"/crew")
+    @PostMapping(value = "/crew")
     public final String AddCrew(@Valid final Crew crew,
                                 final BindingResult result,
                                 final Model model) {
@@ -87,7 +87,7 @@ public class CrewController {
 
     }
 
-    @GetMapping(value = PATH_TO_ROOT_FOLDER+"/editCrew/{id}")
+    @GetMapping(value = "/editCrew/{id}")
     public final String getUpdateCrew(@PathVariable final int id,
                                       final Model model) {
         LOGGER.debug("Req: getUpdateCrew({})", id);
@@ -101,7 +101,7 @@ public class CrewController {
         return "crew";
     }
 
-    @PostMapping(value = PATH_TO_ROOT_FOLDER+"/editCrew/{id}")
+    @PostMapping(value = "/editCrew/{id}")
     public final String updateCrew(@Valid final Crew crew,
                                    BindingResult result,
                                    Model model) {
@@ -118,14 +118,14 @@ public class CrewController {
         }
     }
 
-    @GetMapping(value = PATH_TO_ROOT_FOLDER+"/crew/{id}/delete")
+    @GetMapping(value = "/crew/{id}/delete")
     public final String deleteCrew(@PathVariable final int id) {
         LOGGER.debug("deleteCrew({})", id);
         crewService.deleteCrewById(id);
         return "redirect:"+PATH_TO_ROOT_FOLDER+"/crews";
     }
 
-    @PostMapping(value = PATH_TO_ROOT_FOLDER+"/filterCrews")
+    @PostMapping(value = "/filterCrews")
     public final String filterCalls(@Valid final DatesRange datesRange,
                                     final BindingResult result,
                                     final Model model) {

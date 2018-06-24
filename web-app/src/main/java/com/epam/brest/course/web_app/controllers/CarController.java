@@ -41,7 +41,7 @@ public class CarController {
      * @param model collection of CarDtoWithCrew
      * @return Template name.
      */
-    @GetMapping(value = PATH_TO_ROOT_FOLDER +"/cars")
+    @GetMapping(value = "/cars")
     public final String getCars(final Model model) {
         LOGGER.debug("Req: getCars()");
         Collection<CarDtoWithCrew> cars =
@@ -57,7 +57,7 @@ public class CarController {
      * @param model Model
      * @return Template name.
      */
-    @GetMapping(value = PATH_TO_ROOT_FOLDER+"/car")
+    @GetMapping(value = "/car")
     public final String getCarAdd(final Model model) {
         LOGGER.debug("getCarAdd()");
         boolean isEdit = false;
@@ -74,7 +74,7 @@ public class CarController {
      * @param model  Model
      * @return Template name.
      */
-    @PostMapping(value = PATH_TO_ROOT_FOLDER+"/car")
+    @PostMapping(value = "/car")
     public final String addCar(@Valid final Car car,
                                final BindingResult result,
                                final Model model) {
@@ -99,7 +99,7 @@ public class CarController {
      * @param model Model
      * @return Template name.
      */
-    @GetMapping(value = PATH_TO_ROOT_FOLDER+"/editCar/{id}")
+    @GetMapping(value = "/editCar/{id}")
     public final String getCarUpdate(@PathVariable final int id,
                                      final Model model) {
         LOGGER.debug("Req: getCarUpdate({})", id);
@@ -119,7 +119,7 @@ public class CarController {
      * @param model  Model
      * @return Template name.
      */
-    @PostMapping(value = PATH_TO_ROOT_FOLDER+"/editCar/{id}")
+    @PostMapping(value = "/editCar/{id}")
     public final String updateCar(@Valid final Car car,
                                   final BindingResult result,
                                   final Model model) {
@@ -142,7 +142,7 @@ public class CarController {
      * @param carId carId
      * @return template name
      */
-    @GetMapping(value = PATH_TO_ROOT_FOLDER+"/car/{id}/delete")
+    @GetMapping(value = "/car/{id}/delete")
     public final String deleteCar(@PathVariable(value = "id") final int carId) {
         LOGGER.debug("deleteCar({})", carId);
         carService.deleteCarById(carId);
