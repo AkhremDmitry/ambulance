@@ -37,12 +37,14 @@ public class CrewController {
     @Autowired
     private CarService carService;
 
+    private final static String PATH_TO_ROOT_FOLDER = "/ambulance";
+
     /**
      * Logger.
      */
     private final static Logger LOGGER = LogManager.getLogger();
 
-    @GetMapping(value = "/crews")
+    @GetMapping(value = PATH_TO_ROOT_FOLDER+"/crews")
     public final String getCrews(final Model model) {
         LOGGER.debug("Req: getCrews()");
         Collection<CrewDtoWithCall> crews =
@@ -54,7 +56,7 @@ public class CrewController {
         return "crews";
     }
 
-    @GetMapping(value = "/crew")
+    @GetMapping(value = PATH_TO_ROOT_FOLDER+"/crew")
     public final String getAddCrew(final Model model) {
         LOGGER.debug("Req: getAddCrew()");
         boolean isEdit = false;
@@ -66,7 +68,7 @@ public class CrewController {
         return "crew";
     }
 
-    @PostMapping(value = "/crew")
+    @PostMapping(value = PATH_TO_ROOT_FOLDER+"/crew")
     public final String AddCrew(@Valid final Crew crew,
                                 final BindingResult result,
                                 final Model model) {
@@ -80,12 +82,12 @@ public class CrewController {
             return "crew";
         } else {
             crewService.addCrew(crew);
-            return "redirect:/crews";
+            return "redirect:"+PATH_TO_ROOT_FOLDER+"/crews";
         }
 
     }
 
-    @GetMapping(value = "/editCrew/{id}")
+    @GetMapping(value = PATH_TO_ROOT_FOLDER+"/editCrew/{id}")
     public final String getUpdateCrew(@PathVariable final int id,
                                       final Model model) {
         LOGGER.debug("Req: getUpdateCrew({})", id);
@@ -99,7 +101,7 @@ public class CrewController {
         return "crew";
     }
 
-    @PostMapping(value = "/editCrew/{id}")
+    @PostMapping(value = PATH_TO_ROOT_FOLDER+"/editCrew/{id}")
     public final String updateCrew(@Valid final Crew crew,
                                    BindingResult result,
                                    Model model) {
@@ -112,18 +114,18 @@ public class CrewController {
             return "crew";
         } else {
             crewService.updateCrew(crew);
-            return "redirect:/crews";
+            return "redirect:"+PATH_TO_ROOT_FOLDER+"/crews";
         }
     }
 
-    @GetMapping(value = "/crew/{id}/delete")
+    @GetMapping(value = PATH_TO_ROOT_FOLDER+"/crew/{id}/delete")
     public final String deleteCrew(@PathVariable final int id) {
         LOGGER.debug("deleteCrew({})", id);
         crewService.deleteCrewById(id);
-        return "redirect:/crews";
+        return "redirect:"+PATH_TO_ROOT_FOLDER+"/crews";
     }
 
-    @PostMapping(value = "/filterCrews")
+    @PostMapping(value = PATH_TO_ROOT_FOLDER+"/filterCrews")
     public final String filterCalls(@Valid final DatesRange datesRange,
                                     final BindingResult result,
                                     final Model model) {

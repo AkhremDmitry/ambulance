@@ -27,12 +27,14 @@ public class CallController {
     @Autowired
     private CallService callService;
 
+    private final static String PATH_TO_ROOT_FOLDER = "/ambulance";
+
     /**
      * Logger.
      */
     private final static Logger LOGGER = LogManager.getLogger();
 
-    @GetMapping(value = "/calls")
+    @GetMapping(value = PATH_TO_ROOT_FOLDER+"/calls")
     public final String getCalls(final Model model) {
         LOGGER.debug("Req: getCalls()");
         Collection<Call> calls =
@@ -44,7 +46,7 @@ public class CallController {
         return "calls";
     }
 
-    @GetMapping(value = "/call")
+    @GetMapping(value = PATH_TO_ROOT_FOLDER+"/call")
     public final String getAddCall(final Model model) {
         LOGGER.debug("getAddCall()");
         Collection<CrewDto> crews = crewService.getAllCrewDto();
@@ -55,7 +57,7 @@ public class CallController {
         return "call";
     }
 
-    @PostMapping(value = "/call")
+    @PostMapping(value = PATH_TO_ROOT_FOLDER+"/call")
     public final String addCall(@Valid final Call call,
                                 final BindingResult result,
                                 final Model model) {
@@ -70,11 +72,11 @@ public class CallController {
             return "call";
         } else {
             callService.addCall(call);
-            return "redirect:/calls";
+            return "redirect:"+PATH_TO_ROOT_FOLDER+"/calls";
         }
     }
 
-    @GetMapping(value = "/editCall/{id}")
+    @GetMapping(value = PATH_TO_ROOT_FOLDER+"/editCall/{id}")
     public final String getUpdateCall(@PathVariable final int id,
                                       final Model model) {
         LOGGER.debug("Req: getEditCall({})", id);
@@ -88,7 +90,7 @@ public class CallController {
         return "call";
     }
 
-    @PostMapping(value = "/editCall/{id}")
+    @PostMapping(value = PATH_TO_ROOT_FOLDER+"/editCall/{id}")
     public final String updateCall(@Valid final Call call,
                                    final BindingResult result,
                                    final Model model) {
@@ -102,19 +104,19 @@ public class CallController {
             return "call";
         } else {
             callService.updateCall(call);
-            return "redirect:/calls";
+            return "redirect:"+PATH_TO_ROOT_FOLDER+"/calls";
         }
 
     }
 
-    @GetMapping(value = "/call/{id}/delete")
+    @GetMapping(value = PATH_TO_ROOT_FOLDER+"/call/{id}/delete")
     public final String deleteCall(@PathVariable final int id) {
         LOGGER.debug("deleteCall({})", id);
         callService.deleteCallById(id);
-        return "redirect:/calls";
+        return "redirect:"+PATH_TO_ROOT_FOLDER+"/calls";
     }
 
-    @PostMapping(value = "/filterCalls")
+    @PostMapping(value = PATH_TO_ROOT_FOLDER+"/filterCalls")
     public final String filterCalls(@Valid final DatesRange datesRange,
                                     final BindingResult result,
                                     final Model model) {

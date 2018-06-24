@@ -28,6 +28,8 @@ public class CarController {
     @Autowired
     private CarService carService;
 
+    private final static String PATH_TO_ROOT_FOLDER = "/ambulance";
+
     /**
      * Logger.
      */
@@ -39,7 +41,7 @@ public class CarController {
      * @param model collection of CarDtoWithCrew
      * @return Template name.
      */
-    @GetMapping(value = "/cars")
+    @GetMapping(value = PATH_TO_ROOT_FOLDER +"/cars")
     public final String getCars(final Model model) {
         LOGGER.debug("Req: getCars()");
         Collection<CarDtoWithCrew> cars =
@@ -55,7 +57,7 @@ public class CarController {
      * @param model Model
      * @return Template name.
      */
-    @GetMapping(value = "/car")
+    @GetMapping(value = PATH_TO_ROOT_FOLDER+"/car")
     public final String getCarAdd(final Model model) {
         LOGGER.debug("getCarAdd()");
         boolean isEdit = false;
@@ -72,7 +74,7 @@ public class CarController {
      * @param model  Model
      * @return Template name.
      */
-    @PostMapping(value = "/car")
+    @PostMapping(value = PATH_TO_ROOT_FOLDER+"/car")
     public final String addCar(@Valid final Car car,
                                final BindingResult result,
                                final Model model) {
@@ -85,7 +87,7 @@ public class CarController {
         } else {
             Car resultCar = carService.addCar(car);
             LOGGER.debug("Res: addCar({})", resultCar);
-            return "redirect:/cars";
+            return "redirect:"+PATH_TO_ROOT_FOLDER+"/cars";
         }
 
     }
@@ -97,7 +99,7 @@ public class CarController {
      * @param model Model
      * @return Template name.
      */
-    @GetMapping(value = "/editCar/{id}")
+    @GetMapping(value = PATH_TO_ROOT_FOLDER+"/editCar/{id}")
     public final String getCarUpdate(@PathVariable final int id,
                                      final Model model) {
         LOGGER.debug("Req: getCarUpdate({})", id);
@@ -117,7 +119,7 @@ public class CarController {
      * @param model  Model
      * @return Template name.
      */
-    @PostMapping(value = "/editCar/{id}")
+    @PostMapping(value = PATH_TO_ROOT_FOLDER+"/editCar/{id}")
     public final String updateCar(@Valid final Car car,
                                   final BindingResult result,
                                   final Model model) {
@@ -129,7 +131,7 @@ public class CarController {
             return "car";
         } else {
             carService.updateCar(car);
-            return "redirect:/cars";
+            return "redirect:"+PATH_TO_ROOT_FOLDER+"/cars";
         }
 
     }
@@ -140,10 +142,10 @@ public class CarController {
      * @param carId carId
      * @return template name
      */
-    @GetMapping(value = "/car/{id}/delete")
+    @GetMapping(value = PATH_TO_ROOT_FOLDER+"/car/{id}/delete")
     public final String deleteCar(@PathVariable(value = "id") final int carId) {
         LOGGER.debug("deleteCar({})", carId);
         carService.deleteCarById(carId);
-        return "redirect:/cars";
+        return "redirect:"+PATH_TO_ROOT_FOLDER+"/cars";
     }
 }
