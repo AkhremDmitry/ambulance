@@ -130,7 +130,7 @@ public class CarControllerTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isFound())
-                .andExpect(view().name("redirect:/cars"));
+                .andExpect(view().name("redirect:/ambulance/cars"));
 
         EasyMock.verify(mockCarService);
     }
@@ -143,7 +143,7 @@ public class CarControllerTest {
         mockMvc.perform(MockMvcRequestBuilderUtils.postForm("/car", CAR))
                 .andDo(print())
                 .andExpect(status().isFound())
-                .andExpect(view().name("redirect:/cars"));
+                .andExpect(view().name("redirect:/ambulance/cars"));
 
         EasyMock.verify(mockCarService);
     }
@@ -157,7 +157,7 @@ public class CarControllerTest {
         mockMvc.perform(MockMvcRequestBuilderUtils.postForm("/editCar/" + CAR.getCarId(), CAR))
                 .andDo(print())
                 .andExpect(status().isFound())
-                .andExpect(view().name("redirect:/cars"));
+                .andExpect(view().name("redirect:/ambulance/cars"));
 
         EasyMock.verify(mockCarService);
     }

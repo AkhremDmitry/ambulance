@@ -129,7 +129,7 @@ public class CrewControllerTest {
         mockMvc.perform(MockMvcRequestBuilderUtils.postForm("/crew", CREW))
                 .andDo(print())
                 .andExpect(status().isFound())
-                .andExpect(view().name("redirect:/crews"));
+                .andExpect(view().name("redirect:/ambulance/crews"));
 
         EasyMock.verify(mockCrewService);
     }
@@ -172,7 +172,7 @@ public class CrewControllerTest {
                 .postForm("/editCrew/" + CREW.getCrewId(), CREW))
                 .andDo(print())
                 .andExpect(status().isFound())
-                .andExpect(view().name("redirect:/crews"));
+                .andExpect(view().name("redirect:/ambulance/crews"));
 
         EasyMock.verify(mockCrewService);
     }
@@ -189,7 +189,7 @@ public class CrewControllerTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isFound())
-                .andExpect(view().name("redirect:/crews"));
+                .andExpect(view().name("redirect:/ambulance/crews"));
 
         EasyMock.verify(mockCrewService);
     }
