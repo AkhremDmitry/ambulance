@@ -34,6 +34,8 @@ public class CarRestClientTest {
 
     private Car expCar = new Car();
 
+    private final static String URL_TO_REST_SERVICE = "http://reisin.asuscomm.com:1180/ambulance-rest";
+
     @After
     public void after() {
         EasyMock.verify(mockRestTemplate);
@@ -54,7 +56,7 @@ public class CarRestClientTest {
         List cars = Arrays.asList(carDto);
         ResponseEntity entity = new ResponseEntity(cars, HttpStatus.FOUND);
 
-        EasyMock.expect(mockRestTemplate.getForEntity("http://reisin.asuscomm.com:8180/ambulance-rest/carsDto", List.class))
+        EasyMock.expect(mockRestTemplate.getForEntity(URL_TO_REST_SERVICE + "/carsDto", List.class))
                 .andReturn(entity);
         EasyMock.replay(mockRestTemplate);
 
@@ -69,7 +71,7 @@ public class CarRestClientTest {
     public void getCarByIdTest() {
         ResponseEntity entity = new ResponseEntity(expCar, HttpStatus.FOUND);
 
-        EasyMock.expect(mockRestTemplate.getForEntity("http://reisin.asuscomm.com:8180/ambulance-rest/cars/1", Car.class))
+        EasyMock.expect(mockRestTemplate.getForEntity(URL_TO_REST_SERVICE + "/cars/1", Car.class))
                 .andReturn(entity);
         EasyMock.replay(mockRestTemplate);
 
@@ -83,7 +85,7 @@ public class CarRestClientTest {
         ResponseEntity responseEntity = new ResponseEntity(expCar, HttpStatus.OK);
 
         EasyMock.expect(mockRestTemplate
-                .postForEntity("http://reisin.asuscomm.com:8180/ambulance-rest/cars", expCar, Car.class))
+                .postForEntity(URL_TO_REST_SERVICE + "/cars", expCar, Car.class))
                 .andReturn(responseEntity);
         EasyMock.replay(mockRestTemplate);
 
@@ -94,7 +96,7 @@ public class CarRestClientTest {
 
     @Test
     public void updateCarTest(){
-        mockRestTemplate.put("http://reisin.asuscomm.com:8180/ambulance-rest/cars", expCar);
+        mockRestTemplate.put(URL_TO_REST_SERVICE + "/cars", expCar);
         EasyMock.expectLastCall();
         EasyMock.replay(mockRestTemplate);
 
@@ -103,7 +105,7 @@ public class CarRestClientTest {
 
     @Test
     public void deleteCarByIdTest(){
-        mockRestTemplate.delete("http://reisin.asuscomm.com:8180/ambulance-rest/cars/1");
+        mockRestTemplate.delete(URL_TO_REST_SERVICE + "/cars/1");
         EasyMock.expectLastCall();
         EasyMock.replay(mockRestTemplate);
 
@@ -114,7 +116,7 @@ public class CarRestClientTest {
     public void getNumberOfCarsTest() {
         int numOfCar = 3;
         EasyMock.expect(mockRestTemplate
-                .getForObject("http://reisin.asuscomm.com:8180/ambulance-rest/carsNum", Integer.class))
+                .getForObject(URL_TO_REST_SERVICE + "/carsNum", Integer.class))
                 .andReturn(numOfCar);
         EasyMock.replay(mockRestTemplate);
 
@@ -129,7 +131,7 @@ public class CarRestClientTest {
         List cars = Arrays.asList(car);
         ResponseEntity entity = new ResponseEntity(cars, HttpStatus.FOUND);
 
-        EasyMock.expect(mockRestTemplate.getForEntity("http://reisin.asuscomm.com:8180/ambulance-rest/cars", List.class))
+        EasyMock.expect(mockRestTemplate.getForEntity(URL_TO_REST_SERVICE + "/cars", List.class))
                 .andReturn(entity);
         EasyMock.replay(mockRestTemplate);
 
