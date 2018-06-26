@@ -118,7 +118,7 @@ public class CallControllerTest {
         mockMvc.perform(MockMvcRequestBuilderUtils.postForm("/call", CALL))
                 .andDo(print())
                 .andExpect(status().isFound())
-                .andExpect(view().name("redirect:/ambulance/calls"));
+                .andExpect(view().name("redirect:/calls"));
 
         EasyMock.verify(mockCallService);
     }
@@ -162,7 +162,7 @@ public class CallControllerTest {
                 .postForm("/editCall/" + CALL.getCallId(), CALL))
                 .andDo(print())
                 .andExpect(status().isFound())
-                .andExpect(view().name("redirect:/ambulance/calls"));
+                .andExpect(view().name("redirect:/calls"));
 
         EasyMock.verify(mockCallService);
     }
@@ -179,7 +179,7 @@ public class CallControllerTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isFound())
-                .andExpect(view().name("redirect:/ambulance/calls"));
+                .andExpect(view().name("redirect:/calls"));
 
         EasyMock.verify(mockCallService);
     }

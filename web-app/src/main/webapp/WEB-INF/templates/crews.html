@@ -155,7 +155,7 @@
 
                             <td class="text-right">
                                 <a href="crew.html"
-                                   th:href="'/editCrew/'+${crew.crewId}"
+                                   th:href="'/ambulance/editCrew/'+${crew.crewId}"
                                    class="btn-sm btn-outline-secondary"
                                    data-toggle="tooltip"
                                    data-placement="top"
@@ -327,7 +327,7 @@
     $('#confirmDeleteModal').on('show.bs.modal', function (event) {
         var target = $(event.relatedTarget)
         $(this).find('.modal-body').text('Please confirm delete crew: "' + target.data('name') + '"')
-        document.getElementById('deleteUrl').href = '/crew/' + target.data('id') + '/delete';
+        document.getElementById('deleteUrl').href = '/ambulance/crew/' + target.data('id') + '/delete';
     })
 </script>
 

@@ -37,7 +37,7 @@ public class CrewController {
     @Autowired
     private CarService carService;
 
-    private final static String PATH_TO_ROOT_FOLDER = "/ambulance";
+    private final static String PATH_TO_ROOT_FOLDER = "";
 
     /**
      * Logger.

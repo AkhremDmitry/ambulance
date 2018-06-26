@@ -155,7 +155,7 @@
 
                             <td class="text-right">
                                 <a href="call.html"
-                                   th:href="'/editCall/'+${call.callId}"
+                                   th:href="'/ambulance/editCall/'+${call.callId}"
                                    class="btn-sm btn-outline-secondary"
                                    data-toggle="tooltip"
                                    data-placement="top"
@@ -243,7 +243,7 @@
     $('#confirmDeleteModal').on('show.bs.modal', function (event) {
         var target = $(event.relatedTarget)
         $(this).find('.modal-body').text('Please confirm delete call №: "' + target.data('id') + '"')
-        document.getElementById('deleteUrl').href = '/call/' + target.data('id') + '/delete';
+        document.getElementById('deleteUrl').href = '/ambulance/call/' + target.data('id') + '/delete';
     })
 </script>
 

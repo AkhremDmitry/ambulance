@@ -97,7 +97,7 @@
                             <td th:text="${car.numberOfCrew}">2</td>
                             <td class="text-right">
                                 <a href="car.html"
-                                   th:href="'/editCar/'+${car.carId}"
+                                   th:href="'/ambulance/editCar/'+${car.carId}"
                                    class="btn-sm btn-outline-secondary"
                                    data-toggle="tooltip"
                                    data-placement="top"
@@ -269,7 +269,7 @@
     $('#confirmDeleteModal').on('show.bs.modal', function (event) {
         var target = $(event.relatedTarget)
         $(this).find('.modal-body').text('Please confirm delete car: "' + target.data('name') + '"')
-        document.getElementById('deleteUrl').href = '/car/' + target.data('id') + '/delete';
+        document.getElementById('deleteUrl').href = '/ambulance/car/' + target.data('id') + '/delete';
     })
 </script>
 
