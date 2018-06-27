@@ -11,6 +11,8 @@ import java.util.Collection;
 public interface CallService {
 
     /**
+     *
+     *
      * Return call by id from database.
      * @param callId id
      * @return Call
