@@ -12,6 +12,19 @@ import java.util.Collection;
 public interface CarService {
 
     /**
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
      * Return all cars from database.
      * @return Collection CarsDto.
      */
