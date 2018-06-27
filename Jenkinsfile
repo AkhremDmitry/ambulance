@@ -1,4 +1,16 @@
-@Library('esi@master') _
+pipeline {
+    agent any
 
-esiBuild {
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building..'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+    }
 }
